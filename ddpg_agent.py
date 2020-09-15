@@ -27,15 +27,15 @@ class Agent():
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(random_seed)            
-        self.epsilon = EPSILON                
-        self.actor_local = Actor(state_size, action_size, random_seed).to(device)
+        self.epsilon = EPSILON   
         self.actor_target = Actor(state_size, action_size, random_seed).to(device)
-        self.actor_optimizer = optim.Adam(self.actor_local.parameters(), lr=LR_ACTOR)                
-        self.critic_local = Critic(state_size, action_size, random_seed).to(device)
+        self.actor_local = Actor(state_size, action_size, random_seed).to(device)
+        self.actor_optimizer = optim.Adam(self.actor_local.parameters(), lr=LR_ACTOR)  
         self.critic_target = Critic(state_size, action_size, random_seed).to(device)
-        self.critic_optimizer = optim.Adam(self.critic_local.parameters(), lr=LR_CRITIC, weight_decay=WEIGHT_DECAY)                
-        self.noise = OUNoise(action_size, random_seed)                
-        self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, random_seed)                      
+        self.critic_local = Critic(state_size, action_size, random_seed).to(device)
+        self.critic_optimizer = optim.Adam(self.critic_local.parameters(), lr=LR_CRITIC, weight_decay=WEIGHT_DECAY) 
+        self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, random_seed) 
+        self.noise = OUNoise(action_size, random_seed)                                            
     def act(self, state, add_noise=True):
         state = torch.from_numpy(state).float().to(device)
         self.actor_local.eval()
