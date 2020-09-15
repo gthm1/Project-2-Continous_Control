@@ -11,7 +11,7 @@ We have 33 possible states corresponding to position, rotation, velocity, and an
 ##### Deep Deterministic Policy Gradients :
 > DDPG uses four neural networks: a Q network, a deterministic policy network, a target Q network, and a target policy network.
 
-![1.png](attachment:image.png)
+![image.png](attachment:1.png)
 
 > The Q network and policy network is very much like simple Advantage Actor-Critic, but in DDPG, the Actor directly maps states to actions (the output of the network directly the output) instead of outputting the probability distribution across a discrete action space
 
