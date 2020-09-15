@@ -6,22 +6,20 @@ import random
 import copy
 from collections import namedtuple, deque
 from model import Actor, Critic
-
-OU_SIGMA = 0.2
-OU_THETA = 0.15
-LEARN_EVERY = 20       
-LEARN_NUM = 10            
 GRAD_CLIPPING = 1.0          
 BUFFER_SIZE = int(1e6) 
 BATCH_SIZE = 128   
 WEIGHT_DECAY = 0       
-EPSILON = 1.0         
+EPSILON = 1.0      
+OU_SIGMA = 0.2
+OU_THETA = 0.15
+LEARN_EVERY = 20       
+LEARN_NUM = 10               
 EPSILON_DECAY = 1e-6
 GAMMA = 0.99           
 TAU = 1e-3             
 LR_ACTOR = 1e-3        
 LR_CRITIC = 1e-3       
-
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class Agent():
